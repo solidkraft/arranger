@@ -10,6 +10,7 @@ gem "rails", "~> 6.0.3", ">= 6.0.3.2"
 
 group :development, :test do
   gem "byebug", platforms: :mri
+  gem "rspec-rails", "~> 4.0.1"
 end
 
 group :development do
