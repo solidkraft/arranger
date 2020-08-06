@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe Event do
   describe "#schedule" do
     it "schedules event" do
-      event = Event.new("Somewhere", "One day")
+      event = Event.new(location: "Somewhere", starts_at: "One day")
 
       result = event.schedule
 
