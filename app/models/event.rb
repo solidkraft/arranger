@@ -4,7 +4,7 @@ class Event
   attr_reader :location, :starts_at
 
   def initialize(location:, starts_at:)
-    @location = Where.new(location)
+    @location = Where[location]
     @starts_at = When.new(starts_at)
   end
 
