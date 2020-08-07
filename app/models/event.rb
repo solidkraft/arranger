@@ -1,6 +1,5 @@
 class Event
-  Where = Struct.new(:location) { def to_s; location end }
-  When = Struct.new(:starts_at) { def to_s; starts_at end }
+  When = Struct.new(:starts_at) { alias_method :starts_at, :to_s }
 
   attr_reader :location, :starts_at
 
