@@ -14,5 +14,7 @@ class When
     "#{self.class}[#{starts_at}]"
   end
 
-  alias_method :starts_at, :to_s
+  def to_s
+    starts_at
+  end
 end

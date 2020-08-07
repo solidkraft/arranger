@@ -7,7 +7,7 @@ class Event
   attr_reader :location, :starts_at
 
   def schedule
-    "#{starts_at} at #{location}"
+    "#{starts_at} #{location}"
   end
 
   alias_method :where, :location

@@ -14,5 +14,7 @@ class Where
     "#{self.class}[#{location}]"
   end
 
-  alias_method :location, :to_s
+  def to_s
+    location
+  end
 end

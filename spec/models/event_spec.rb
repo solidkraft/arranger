@@ -7,7 +7,7 @@ RSpec.describe Event do
 
       result = event.schedule
 
-      expect(result).to eq("#{event.when} at #{event.where}")
+      expect(result).to eq("#{event.when} #{event.where}")
     end
   end
 end
