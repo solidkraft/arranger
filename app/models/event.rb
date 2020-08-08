@@ -3,8 +3,8 @@ require "when"
 
 class Event
   def initialize(location:, starts_at:)
-    @location = Where(location)
-    @starts_at = When(starts_at)
+    @location = location ? Where(location) : Blank.new
+    @starts_at = starts_at ? When(starts_at) : Blank.new
   end
 
   attr_reader :location, :starts_at
