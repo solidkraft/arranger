@@ -18,3 +18,7 @@ class When
     starts_at
   end
 end
+
+def When(starts_at)
+  When[starts_at]
+end

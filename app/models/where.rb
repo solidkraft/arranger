@@ -18,3 +18,7 @@ class Where
     location
   end
 end
+
+def Where(location)
+  Where[location]
+end
