@@ -20,5 +20,9 @@ class Where
 end
 
 def Where(location)
-  Where[location]
+  case location
+  when String then Where[location]
+  when Where then location
+  else fail TypeError, "Can't make location from #{location.inspect}"
+  end
 end
