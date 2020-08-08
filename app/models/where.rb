@@ -11,11 +11,11 @@ class Where
   attr_reader :location
 
   def inspect
-    "#{self.class}[#{location}]"
+    "#{self.class}(#{location})"
   end
 
   def to_s
-    location
+    location.to_s
   end
 end
 

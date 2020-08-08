@@ -11,11 +11,11 @@ class When
   attr_reader :starts_at
 
   def inspect
-    "#{self.class}[#{starts_at}]"
+    "#{self.class}(#{starts_at})"
   end
 
   def to_s
-    starts_at
+    starts_at.to_s
   end
 end
 
