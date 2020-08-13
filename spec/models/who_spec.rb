@@ -3,21 +3,20 @@ require "rails_helper"
 RSpec.describe Who do
   describe "initialization" do
     context "when valid" do
-      it "returns attendants of the event" do
-        organizer, invitee = "organizer", "invitee"
-        who = Who(organizer: organizer, invitee: invitee)
+      it "returns participants of the event" do
+        participants = ["organizer", "invitee"]
+        who = Who(participants)
 
-        expect(who.organizer).to eq(organizer)
+        expect(who.participants).to eq(participants)
       end
     end
 
     context "when invalid" do
       it "raises exception" do
-        invalid_organizer = nil
-        invitee = "invitee"
+        invalid_participants = nil
 
         expect {
-          Who(organizer: invalid_organizer, invitee: invitee)
+          Who(invalid_participants)
         }.to raise_error(ArgumentError)
       end
     end

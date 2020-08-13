@@ -1,14 +1,14 @@
 class What
-  def initialize(service, duration:)
-    @service = service
+  def initialize(circumstance, duration:)
+    @circumstance = circumstance
     @duration = duration
   end
 
-  attr_reader :service
+  attr_reader :circumstance
 end
 
-def What(service, duration: 0)
-  fail ArgumentError unless service
+def What(circumstance, duration: 0)
+  fail ArgumentError unless circumstance
 
-  What.new(service, duration: duration)
+  What.new(circumstance, duration: duration)
 end

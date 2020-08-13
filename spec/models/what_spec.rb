@@ -4,19 +4,19 @@ RSpec.describe What do
   describe "initialization" do
     context "when valid" do
       it "returns reason or circumstance of the event" do
-        service = "Service"
-        what = What(service)
+        circumstance = "Reason"
+        what = What(circumstance)
 
-        expect(what.service).to eq(service)
+        expect(what.circumstance).to eq(circumstance)
       end
     end
 
     context "when invalid" do
       it "raises exception" do
-        invalid_service = nil
+        invalid_circumstance = nil
 
         expect {
-          What(invalid_service)
+          What(invalid_circumstance)
         }.to raise_error(ArgumentError)
       end
     end

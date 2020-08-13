@@ -7,9 +7,8 @@ RSpec.describe Event do
         event = Event.new(
           location: nil,
           starts_at: nil,
-          organizer: nil,
           invitee: nil,
-          circumstance: nil
+          event_type: nil
         )
 
         expect(event.where.to_s).to eq("")
@@ -26,13 +25,12 @@ RSpec.describe Event do
 
   describe "#schedule" do
     it "schedules event" do
-      location, starts_at, organizer, invitee, circumstance = "Somewhere", "One day", "Host", "Invitee", "Party"
+      location, starts_at, invitee, circumstance = "Somewhere", "One day", "Invitee", "Party"
       event = Event.new(
         location: location,
         starts_at: starts_at,
-        organizer: organizer,
         invitee: invitee,
-        circumstance: circumstance
+        event_type: circumstance
       )
 
       result = event.schedule
