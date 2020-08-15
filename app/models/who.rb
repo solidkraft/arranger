@@ -1,13 +1,14 @@
 class Who
-  def initialize(participants)
-    @participants = participants
+  def initialize(host:, invitees:)
+    @host = host
+    @invitees = invitees
   end
 
-  attr_reader :participants
+  attr_reader :host, :invitees
 end
 
-def Who(participants)
-  fail ArgumentError unless participants
+def Who(host:, invitees:)
+  fail ArgumentError unless host && invitees
 
-  Who.new(participants)
+  Who.new(host: host, invitees: invitees)
 end
