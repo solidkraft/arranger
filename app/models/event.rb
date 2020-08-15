@@ -4,21 +4,22 @@ require "who"
 require "what"
 
 class Event
-  def initialize(location:, starts_at:, invitee:, event_type:)
-    @location = location ? Where(location) : Blank.new
-    @starts_at = starts_at ? When(starts_at) : Blank.new
-    @participants = invitee ? Who([organizer = nil, invitee]) : Blank.new
-    @event_type = event_type ? What(event_type) : Blank.new
+  def initialize(id:, event_types:, starts_at:, invitees:, location:)
+    @id = id
+    @event_types = event_types ? event_types : []
+    @starts_at = starts_at ? starts_at : Blank.new
+    @invitees = invitees ? invitees : []
+    @location = location ? location : Blank.new
   end
 
-  attr_reader :location, :starts_at, :participants, :event_type
+  attr_reader :id, :event_types, :starts_at, :invitees, :location
 
   def schedule
-    "#{starts_at} #{location}"
+    :event_created
   end
 
   alias_method :where, :location
   alias_method :when, :starts_at
-  alias_method :who, :participants
-  alias_method :what, :event_type
+  alias_method :who, :invitees
+  alias_method :what, :event_types
 end

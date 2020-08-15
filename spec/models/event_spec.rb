@@ -5,20 +5,19 @@ RSpec.describe Event do
     context "when location and/or starting date/time is not provided" do
       it 'defaults to blank as value' do
         event = Event.new(
-          location: nil,
+          id: nil,
+          event_types: nil,
           starts_at: nil,
-          invitee: nil,
-          event_type: nil
+          invitees: nil,
+          location: nil
         )
 
         expect(event.where.to_s).to eq("")
         expect(event.when.to_s).to eq("")
-        expect(event.who.to_s).to eq("")
-        expect(event.what.to_s).to eq("")
+        expect(event.who).to eq([])
+        expect(event.what).to eq([])
         expect(event.where.class).to eq(Blank)
         expect(event.when.class).to eq(Blank)
-        expect(event.who.class).to eq(Blank)
-        expect(event.what.class).to eq(Blank)
       end
     end
   end
@@ -27,15 +26,16 @@ RSpec.describe Event do
     it "schedules event" do
       location, starts_at, invitee, circumstance = "Somewhere", "One day", "Invitee", "Party"
       event = Event.new(
-        location: location,
+        id: SecureRandom.uuid,
+        event_types: [circumstance],
         starts_at: starts_at,
-        invitee: invitee,
-        event_type: circumstance
+        invitees: [invitee],
+        location: location
       )
 
       result = event.schedule
 
-      expect(result).to eq("#{starts_at} #{location}")
+      expect(result).to eq(:event_created)
     end
   end
 end
