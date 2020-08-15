@@ -4,9 +4,9 @@ require "when"
 require "where"
 
 class EventProcess
-  def initialize(calendar:, event_id:, event_types:, starts_at:, invitees:)
-    @calendar = calendar
+  def initialize(event_id:, calendar:, event_types:, starts_at:, invitees:)
     @event_id = event_id
+    @calendar = calendar
     @event_types = event_types
     @starts_at = starts_at
     @invitees = invitees
