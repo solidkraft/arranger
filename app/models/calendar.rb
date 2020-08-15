@@ -5,6 +5,14 @@ class Calendar < DelegateClass(Array)
     super([])
   end
 
+  def organization
+    Organization.new(name: "Default", bio: "...", location: "Location")
+  end
+
+  def account
+    Account.new(name: "Name", email: "email@email.com")
+  end
+
   def events
     to_a
   end
@@ -20,6 +28,8 @@ class Calendar < DelegateClass(Array)
   def includes_type?(types)
     true
   end
+
+  delegate :location, to: :organization
 
   alias_method :add, :<<
 end
