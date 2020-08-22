@@ -1,28 +1,30 @@
 class Where
-  def self.[](location)
-    self.new(location)
-  end
-
-  def initialize(location)
+  def initialize(location: nil, lat: nil, lon: nil)
     @location = location
+    @lat = lat
+    @lon = lon
     freeze
   end
 
-  attr_reader :location
+  attr_reader :location, :lat, :lon
 
   def inspect
-    "#{self.class}(#{location})"
+    "#{self.class}(#{self})"
   end
 
   def to_s
-    location.to_s
+    [location, lat, lon].compact * ","
+  end
+
+  def exceptional?
+    false
   end
 end
 
 def Where(location)
   case location
-  when String then Where[location]
+  when Hash then Where.new(**location)
   when Where then location
-  else fail TypeError, "Can't make location from #{location.inspect}"
+  else ExceptionalValue.new(location, reason: "Unrecognized location")
   end
 end

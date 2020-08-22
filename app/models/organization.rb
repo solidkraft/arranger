@@ -1,11 +1,10 @@
-class Organization
-  def initialize(name:, bio:, location:)
-    @name = name
-    @bio = bio
-    @location = location
-  end
+class Organization < ApplicationRecord
+  attribute :location, LocationType.new
 
-  attr_reader :name, :bio, :location
+  store_accessor :info, :phone, :bio, :logo
+
+  validates :name, presence: true
+  validates :location, value: true
 
   def accounts
     (@accounts ||= [])

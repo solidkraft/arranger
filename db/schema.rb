@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_04_201113) do
+ActiveRecord::Schema.define(version: 2020_08_18_191503) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
+
+  create_table "organizations", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name", null: false
+    t.jsonb "info", default: {}, null: false
+    t.jsonb "location", default: {}, null: false
+    t.index ["location"], name: "index_organizations_on_location", using: :gin
+  end
 
 end
