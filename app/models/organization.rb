@@ -5,8 +5,4 @@ class Organization < ApplicationRecord
 
   validates :name, presence: true
   validates :location, value: true
-
-  def accounts
-    (@accounts ||= [])
-  end
 end
