@@ -17,4 +17,8 @@ FactoryBot.define do
 
     organization
   end
+
+  factory :calendar do
+    account
+  end
 end

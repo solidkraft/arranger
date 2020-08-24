@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe EventProcess do
   it "processes event" do
-    calendar = Calendar.new
+    calendar = create(:calendar)
     event_id = SecureRandom.uuid
     event_types = [double("event_type", name: "Type", duration: 30, cost: 40)]
     starts_at = Time.now

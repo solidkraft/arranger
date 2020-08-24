@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_22_203010) do
+ActiveRecord::Schema.define(version: 2020_08_24_202043) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -23,6 +23,11 @@ ActiveRecord::Schema.define(version: 2020_08_22_203010) do
     t.index ["organization_id"], name: "index_accounts_on_organization_id"
   end
 
+  create_table "calendars", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "account_id", null: false
+    t.index ["account_id"], name: "index_calendars_on_account_id"
+  end
+
   create_table "organizations", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
     t.jsonb "info", default: {}, null: false
@@ -31,4 +36,5 @@ ActiveRecord::Schema.define(version: 2020_08_22_203010) do
   end
 
   add_foreign_key "accounts", "organizations"
+  add_foreign_key "calendars", "accounts"
 end

@@ -1,6 +1,10 @@
 require "rails_helper"
 
 RSpec.describe Calendar do
+  describe "associations" do
+    it { should belong_to(:account) }
+  end
+
   describe "#add" do
     it "adds events to calendar" do
       calendar = Calendar.new

@@ -1,24 +1,20 @@
-require "delegate"
-
-class Calendar < DelegateClass(Array)
-  def initialize
-    super([])
-  end
+class Calendar < ApplicationRecord
+  belongs_to :account
 
   def organization
-    Organization.new(name: "Default", bio: "...", location: "Location")
-  end
-
-  def account
-    Account.new(name: "Name", email: "email@email.com")
+    account.organization
   end
 
   def events
-    to_a
+    (@events ||= [])
   end
 
   def event_types
     (@event_types ||= [])
+  end
+
+  def add(event)
+    events << event
   end
 
   def available?(datetime)
@@ -30,6 +26,4 @@ class Calendar < DelegateClass(Array)
   end
 
   delegate :location, to: :organization
-
-  alias_method :add, :<<
 end

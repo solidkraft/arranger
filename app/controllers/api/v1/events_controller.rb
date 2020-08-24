@@ -17,7 +17,7 @@ module Api
       end
 
       def calendar
-        Calendar.new
+        Calendar.find(params[:calendar_id])
       end
 
       def event_types
