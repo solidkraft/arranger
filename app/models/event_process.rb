@@ -34,7 +34,7 @@ class EventProcess
       circumstance = event_type.name
       duration = event_type.duration
       cost = event_type.cost
-      What(circumstance, duration: duration, cost: cost)
+      What(circumstance: circumstance, duration: duration, cost: cost)
     end
 
     self.state = :type_selected

@@ -1,16 +1,15 @@
 class Calendar < ApplicationRecord
   belongs_to :account
 
+  has_many :calendar_event_types
+  has_many :event_types, through: :calendar_event_types
+
   def organization
     account.organization
   end
 
   def events
     (@events ||= [])
-  end
-
-  def event_types
-    (@event_types ||= [])
   end
 
   def add(event)
@@ -22,7 +21,7 @@ class Calendar < ApplicationRecord
   end
 
   def includes_type?(types)
-    true
+    (types - event_types).empty?
   end
 
   delegate :location, to: :organization

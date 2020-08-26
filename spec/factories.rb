@@ -21,4 +21,11 @@ FactoryBot.define do
   factory :calendar do
     account
   end
+
+  factory :event_type do
+    name
+    type { What(circumstance: "Reason") }
+
+    organization
+  end
 end
