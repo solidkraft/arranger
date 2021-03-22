@@ -32,6 +32,6 @@ jobs:
         RAILS_ENV: test
       run: |
         bundle install --jobs 4 --retry 3
-        bundle exec rails db:schema:load
+        bin/rails db:prepare
     - name: Run tests
       run: bundle exec rspec ./spec
