@@ -28,7 +28,7 @@ jobs:
         bundler-cache: true
     - name: Set up Rails
       env:
-        DATABASE_URL: postgres://postgres:@localhost:5432/test
+        DATABASE_URL: postgres://postgres:postgres@localhost:5432/test
         RAILS_ENV: test
       run: |
         bundle install --jobs 4 --retry 3
