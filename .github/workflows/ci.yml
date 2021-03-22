@@ -37,6 +37,7 @@ jobs:
       env:
         RAILS_ENV: test
       run: |
+        sudo systemctl start postgresql
         cat /var/run/postgresql/.s.PGSQL.5432
         bin/rails db:prepare
     - name: Run tests
