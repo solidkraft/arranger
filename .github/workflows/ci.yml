@@ -26,12 +26,17 @@ jobs:
       uses: ruby/setup-ruby@v1
       with:
         bundler-cache: true
+    - uses: borales/actions-yarn@v2.0.0
+      with:
+        cmd: install
     - name: Set up Rails
-      env:
-        RAILS_ENV: test
       run: |
         sudo apt-get -yqq install libpq-dev
         bundle install --jobs 4 --retry 3
+    - name: Set up DB
+      env:
+        RAILS_ENV: test
+      run:
         bin/rails db:prepare
     - name: Run tests
       run: bundle exec rspec ./spec
