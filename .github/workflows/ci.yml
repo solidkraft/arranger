@@ -36,7 +36,8 @@ jobs:
     - name: Set up DB
       env:
         RAILS_ENV: test
-      run:
+      run: |
+        cat /var/run/postgresql/.s.PGSQL.5432
         bin/rails db:prepare
     - name: Run tests
       run: bundle exec rspec ./spec
