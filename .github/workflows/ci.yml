@@ -32,9 +32,9 @@ jobs:
           bundle exec rake
 
   sonarqube:
-      name: SonarQube Trigger
-      runs-on: ubuntu-latest
-      steps:
+    runs-on: ubuntu-latest
+    name: SonarQube Trigger
+    steps:
       - uses: actions/checkout@master
       - name: SonarQube Scan
         uses: kitabisa/sonarqube-action@master
