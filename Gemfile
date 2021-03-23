@@ -12,6 +12,7 @@ gem "rails", "~> 6.0.3", ">= 6.0.3.2"
 
 group :development, :test do
   gem "byebug", platforms: :mri
+
   gem "rspec-rails", "~> 4.0.1"
 end
 
@@ -19,4 +20,9 @@ group :development do
   gem "listen", "~> 3.2"
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
+end
+
+group :test do
+  gem "factory_bot_rails", "~> 6.1.0"
+  gem "shoulda-matchers", "~> 4.3.0"
 end

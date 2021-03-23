@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe "POST /api/v1/calendars/:calendar_id/events" do
   it "returns events" do
-    calendar = double("calendar", id: SecureRandom.uuid)
+    calendar = create(:calendar)
     params = {
       calendar_id: SecureRandom.uuid,
       event_type_ids: [SecureRandom.uuid],

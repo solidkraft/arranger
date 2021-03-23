@@ -5,7 +5,7 @@ RSpec.describe Where do
     context "when location is valid" do
       it "returns location" do
         location = "location"
-        where = Where(location)
+        where = Where(location: location, lat: 987.123, lon: -232.897)
 
         expect(where.location).to eq(location)
       end
@@ -15,7 +15,11 @@ RSpec.describe Where do
       it "raises type error exception" do
         invalid_location = nil
 
-        expect { Where(invalid_location) }.to raise_error(TypeError, /location/)
+        result = Where(invalid_location)
+
+        expect(result).to be_exceptional
+        expect(result.reason).to eq("Unrecognized location")
+        expect(result.class).to eq(ExceptionalValue)
       end
     end
   end

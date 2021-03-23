@@ -5,7 +5,7 @@ RSpec.describe What do
     context "when valid" do
       it "returns reason or circumstance of the event" do
         circumstance = "Reason"
-        what = What(circumstance)
+        what = What(circumstance: circumstance)
 
         expect(what.circumstance).to eq(circumstance)
       end
@@ -15,9 +15,11 @@ RSpec.describe What do
       it "raises exception" do
         invalid_circumstance = nil
 
-        expect {
-          What(invalid_circumstance)
-        }.to raise_error(ArgumentError)
+        result = What(invalid_circumstance)
+
+        expect(result).to be_exceptional
+        expect(result.reason).to eq("Unrecognized type")
+        expect(result.class).to eq(ExceptionalValue)
       end
     end
   end

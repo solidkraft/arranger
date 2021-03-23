@@ -1,10 +1,5 @@
-class Account
-  def initialize(name:, email:)
-    @name = name
-    @email = email
-  end
+class Account < ApplicationRecord
+  belongs_to :organization
 
-  def calendars
-    (@calendars ||= [])
-  end
+  validates :name, :email, presence: true
 end

@@ -1,17 +1,16 @@
 require "rails_helper"
 
 RSpec.describe Organization do
-  describe "#accounts" do
-    context "when it has no accounts" do
-      it "returns empty list" do
-        organization = Organization.new(name: "Name", bio: "Bio", location: "Location")
-        account = Account.new(name: "Name", email: "email@email.com")
-        organization.accounts << account
+  describe "validations" do
+    it { should validate_presence_of(:name) }
 
-        result = organization.accounts
+    it "expects a location" do
+      location = Where(location: "Location", lat: -1231.9879, lon: 97989.22)
+      organization = create(:organization, location: location)
 
-        expect(result).to include(account)
-      end
+      expect(organization.location.inspect).to eq(location.inspect)
+      expect(organization.location.lat).to eq(-1231.9879)
+      expect(organization.location.lon).to eq(97989.22)
     end
   end
 end

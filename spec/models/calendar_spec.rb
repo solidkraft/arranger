@@ -1,6 +1,12 @@
 require "rails_helper"
 
 RSpec.describe Calendar do
+  describe "associations" do
+    it { should belong_to(:account) }
+
+    it { should have_many(:event_types).through(:calendar_event_types) }
+  end
+
   describe "#add" do
     it "adds events to calendar" do
       calendar = Calendar.new
@@ -25,10 +31,10 @@ RSpec.describe Calendar do
 
   describe "#includes_type?" do
     it "checks if event type is included" do
-      calendar = Calendar.new
-      event_type = double("event_type")
+      event_types = [create(:event_type)]
+      calendar = create(:calendar, event_types: event_types)
 
-      result  = calendar.includes_type?(event_type)
+      result  = calendar.includes_type?(event_types)
 
       expect(result).to eq(true)
     end

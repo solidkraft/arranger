@@ -1,15 +1,12 @@
 require "rails_helper"
 
 RSpec.describe Account do
-  describe "#calendars" do
-    it "returns list of calendars" do
-      account = Account.new(name: "Name", email: "email@email.com")
-      calendar = Calendar.new
-      account.calendars << calendar
+  describe "associations" do
+    it { should belong_to(:organization) }
+  end
 
-      result = account.calendars
-
-      expect(result).to include(calendar)
-    end
+  describe "validations" do
+    it { should validate_presence_of(:name) }
+    it { should validate_presence_of(:email) }
   end
 end
