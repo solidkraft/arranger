@@ -29,4 +29,4 @@ jobs:
         run: |
           bundle install --jobs 4 --retry 3
           bin/rails db:prepare
-          rspec
+          bundle exec rake
