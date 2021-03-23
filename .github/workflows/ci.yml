@@ -55,4 +55,4 @@ jobs:
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           host: ${{ secrets.SONARQUBE_HOST }}
-          login: ${{ secrets.SONARQUBE_TOKEN }}
+          token: ${{ secrets.SONARQUBE_TOKEN }}
