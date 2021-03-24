@@ -64,5 +64,9 @@ jobs:
       - uses: actions/checkout@master
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
+      - name: Install gems
+        run: |
+          gem install bundler
+          bundle install --jobs 4 --retry 3
       - name: Ruby Scan
         uses: ./.github/actions/sonarqube
