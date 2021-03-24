@@ -2,7 +2,7 @@ FROM sonarsource/sonar-scanner-cli
 
 COPY Gemfile ./
 
-RUN apk --no-cache add musl-dev gcc
+RUN apk --no-cache add linux-headers musl-dev gcc
 
 RUN git clone https://github.com/rbenv/ruby-build.git && \
   PREFIX=/usr/local ./ruby-build/install.sh && \
