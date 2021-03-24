@@ -9,7 +9,7 @@ RUN cd /tmp && \
     ( cd ruby-install-0.6.1 && \
       make install ) && \
     rm -rf ruby-install-*
-RUN ruby-install --cleanup ruby 2.2
+RUN ruby-install --cleanup ruby 2.7.2
 
 RUN gem install bundler --no-ri --no-rdoc && bundle install
 
