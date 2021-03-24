@@ -1,0 +1,9 @@
+name: Static Code Analysis with Ruby
+on: []
+rubyScan:
+  runs-on: ubuntu-latest
+  name: Sonarqube Ruby Scan
+  steps:
+    - uses: actions/checkout@master
+    - name: Ruby Scan
+      uses: ./.github/actions/sonarqube
