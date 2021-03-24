@@ -2,6 +2,8 @@ FROM sonarsource/sonar-scanner-cli
 
 COPY Gemfile ./
 
+RUN sudo apt-get install -y zlib1g-dev
+
 RUN git clone https://github.com/rbenv/ruby-build.git && \
   PREFIX=/usr/local ./ruby-build/install.sh && \
   ruby-build -v 2.7.2 /usr/local && \
