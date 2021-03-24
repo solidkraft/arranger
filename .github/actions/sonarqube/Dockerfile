@@ -1,4 +1,4 @@
-FROM ruby:2.7-alpine
+FROM sonarsource/sonar-scanner-cli
 
 COPY Gemfile ./
 

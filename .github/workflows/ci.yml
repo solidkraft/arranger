@@ -62,5 +62,7 @@ jobs:
     name: Sonarqube Ruby Scan
     steps:
       - uses: actions/checkout@master
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
       - name: Ruby Scan
         uses: ./.github/actions/sonarqube
