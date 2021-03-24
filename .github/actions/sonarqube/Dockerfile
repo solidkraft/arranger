@@ -2,17 +2,16 @@ FROM sonarsource/sonar-scanner-cli
 
 COPY Gemfile ./
 
-RUN apk --no-cache add linux-headers musl-dev gcc
+RUN apk upgrade --no-cache --update && \
+    apk add --no-cache --update ca-certificates make bash build-base
+RUN cd /tmp && \
+    wget -O - https://github.com/postmodern/ruby-install/archive/v0.6.1.tar.gz | tar xzvf - && \
+    ( cd ruby-install-0.6.1 && \
+      make install ) && \
+    rm -rf ruby-install-*
+RUN ruby-install --cleanup ruby 2.2
 
-RUN apk --update add --virtual build_deps \
-    build-base ruby-dev libc-dev linux-headers \
-    openssl-dev postgresql-dev libxml2-dev libxslt-dev && \
-    apk del  build_deps
-
-RUN git clone https://github.com/rbenv/ruby-build.git && \
-  PREFIX=/usr/local ./ruby-build/install.sh && \
-  ruby-build -v 2.7.2 /usr/local && \
-  gem install bundler --no-ri --no-rdoc && bundle install
+RUN gem install bundler --no-ri --no-rdoc && bundle install
 
 COPY . .
 
