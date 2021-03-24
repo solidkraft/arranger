@@ -56,3 +56,11 @@ jobs:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           host: ${{ secrets.SONARQUBE_HOST }}
           token: ${{ secrets.SONARQUBE_TOKEN }}
+
+  rubyScan:
+    runs-on: ubuntu-latest
+    name: Sonarqube Ruby Scan
+    steps:
+      - uses: actions/checkout@master
+      - name: Ruby Scan
+        uses: ./.github/actions/sonarqube
